@@ -303,29 +303,57 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* About */
-  #about { padding: 120px 10vw; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 60px; }
-  .about-visual {
-    position: relative;
-    aspect-ratio: 4/5; max-width: 380px;
-  }
-  .about-visual-bg {
-    position: absolute; inset: 0;
-    background: var(--grad); border-radius: 2px; opacity: 0.15;
-  }
-  .about-visual-border {
-    position: absolute; inset: -1px;
-    border: 1px solid rgba(167,139,250,0.3); border-radius: 2px;
-  }
-  .about-visual-inner {
-    position: absolute; inset: 20px;
-    background: var(--surface2); border: 1px solid var(--border);
-    border-radius: 2px; display: flex; align-items: center; justify-content: center;
-    flex-direction: column; gap: 16px;
-  }
+  #about {
+  padding: 120px 10vw;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  max-width: 380px;
+}
+
+.about-visual-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--grad);
+  border-radius: 2px;
+  opacity: 0.15;
+}
+
+.about-visual-border {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(167,139,250,0.3);
+  border-radius: 2px;
+}
+
+.about-visual-inner {
+  position: absolute;
+  inset: 20px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px; /* 🔥 reduced for better spacing */
+}
+
+/* ✅ FIXED AVATAR */
 .about-avatar {
-  width: 220px;
-  height: 220px;
+  width: 60%;
+  max-width: 180px;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 16px;
   border: 2px solid rgba(167,139,250,0.3);
@@ -338,9 +366,15 @@
   object-fit: cover;
   object-position: center top;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-  .about-stat {
+.about-avatar:hover img {
+  transform: scale(1.05);
+}
+
+/* stats */
+.about-stat {
   text-align: center;
 }
 
@@ -348,25 +382,25 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 2rem;
   display: inline-block;
-
   background: var(--grad);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-  .about-stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.1em; }
-  .about-stats { display: flex; gap: 32px; margin-top: 20px; }
-  .about-decoration {
-    position: absolute; bottom: -20px; right: -20px;
-    width: 80px; height: 80px; border: 1px solid rgba(244,114,182,0.2);
-    border-radius: 50%;
-  }
-  .about-decoration2 {
-    position: absolute; top: -16px; left: -16px;
-    width: 50px; height: 50px; border: 1px solid rgba(167,139,250,0.2);
-    border-radius: 50%;
-  }
-  .about-desc {
+
+.about-stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+.about-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+}
+
+.about-desc {
   font-size: 1.05rem;
   line-height: 1.85;
   color: #b0a8c8;
@@ -972,7 +1006,7 @@
       <div class="timeline-desc">Developed QueueLess AI and RushRadar — intelligent systems focused on crowd and queue prediction using Python and basic AI techniques. Gained hands-on experience in problem-solving and software design.</div>
     </div>
     <div class="timeline-item reveal" style="transition-delay:0.3s">
-      <div class="timeline-date">2023</div>
+      <div class="timeline-date">2026</div>
       <div class="timeline-title">Certifications & Online Learning</div>
       <div class="timeline-sub">NPTEL, Udemy & Other Platforms</div>
       <div class="timeline-desc">Completed multiple certifications including Basic Linear Algebra (NPTEL), Java Programming, Introduction to Cyber Security, and Gemini in Google Docs. Continuously expanding technical knowledge through structured online learning.</div>
