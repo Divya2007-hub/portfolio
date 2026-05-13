@@ -402,27 +402,28 @@
 
 /* ✅ FIXED AVATAR (IMPORTANT PART) */
 .about-avatar {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   flex-shrink: 0;
 
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 50%; /* cleaner, more centered profile look */
   border: 2px solid rgba(167,139,250,0.3);
   box-shadow: 0 0 24px var(--glow-purple);
+  margin: 0 auto; /* centers inside inner box */
 }
 
 .about-avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
   transition: transform 0.4s ease;
 }
 
 .about-avatar:hover img {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 
 /* stats */
@@ -437,7 +438,6 @@
   display: inline-block;
   background: var(--grad);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -452,6 +452,7 @@
   gap: 32px;
   margin-top: 20px;
   justify-content: center;
+  flex-wrap: wrap; /* prevents overflow on small screens */
 }
 
 /* text */
