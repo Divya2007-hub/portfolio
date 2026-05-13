@@ -303,53 +303,7 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* About */
-  #about {
-  padding: 120px 10vw;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  margin-top: 60px;
-}
-
-.about-visual {
-  position: relative;
-  aspect-ratio: 4/5;
-  max-width: 380px;
-}
-
-.about-visual-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--grad);
-  border-radius: 2px;
-  opacity: 0.15;
-}
-
-.about-visual-border {
-  position: absolute;
-  inset: -1px;
-  border: 1px solid rgba(167,139,250,0.3);
-  border-radius: 2px;
-}
-
-.about-visual-inner {
-  position: absolute;
-  inset: 20px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px; /* 🔥 reduced for better spacing */
-}
-
-/* ✅ FIXED AVATAR */
+  /* About */
 #about {
   padding: 120px 10vw;
 }
@@ -362,12 +316,14 @@
   margin-top: 60px;
 }
 
+/* OUTER FRAME */
 .about-visual {
   position: relative;
   aspect-ratio: 4/5;
   max-width: 380px;
 }
 
+/* glow background */
 .about-visual-bg {
   position: absolute;
   inset: 0;
@@ -376,6 +332,7 @@
   opacity: 0.15;
 }
 
+/* border frame */
 .about-visual-border {
   position: absolute;
   inset: -1px;
@@ -383,34 +340,38 @@
   border-radius: 2px;
 }
 
+/* INNER BOX (THIS IS WHERE YOUR IMAGE IS) */
 .about-visual-inner {
   position: absolute;
   inset: 20px;
+
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 2px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 
-  gap: 12px;
+  gap: 18px;
   padding: 20px;
-  justify-content: flex-start;
+
+  overflow: hidden; /* 🔥 important fix */
 }
 
-/* ✅ FIXED AVATAR (IMPORTANT PART) */
+/* AVATAR (IMAGE FIXED INSIDE INNER BOX) */
 .about-avatar {
-  width: 140px;
-  height: 140px;
-  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+
+  flex: 0 0 auto; /* 🔥 prevents flex stretching */
 
   overflow: hidden;
-  border-radius: 50%; /* cleaner, more centered profile look */
+  border-radius: 50%;
+
   border: 2px solid rgba(167,139,250,0.3);
   box-shadow: 0 0 24px var(--glow-purple);
-  margin: 0 auto; /* centers inside inner box */
 }
 
 .about-avatar img {
@@ -423,7 +384,7 @@
 }
 
 .about-avatar:hover img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* stats */
@@ -452,7 +413,7 @@
   gap: 32px;
   margin-top: 20px;
   justify-content: center;
-  flex-wrap: wrap; /* prevents overflow on small screens */
+  flex-wrap: wrap;
 }
 
 /* text */
