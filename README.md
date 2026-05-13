@@ -44,4 +44,4 @@ Divya Kumari
 
 ## 🌐 Live Demo
 
-https://agent-6a034bc5d756791235--prismatic-halva-0ab685.netlify.app
+https://agent-6a04cc682c53d177c63e--choco-divya-portfoio.netlify.app
