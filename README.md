@@ -1,4 +1,4 @@
-# My Portfolio
+git commit -m "Update pic"# My Portfolio
 
 A modern, responsive, and premium single-page portfolio website built using HTML, CSS, and JavaScript.
 
