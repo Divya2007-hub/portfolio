@@ -432,9 +432,9 @@ section {
 }
 .about-visual {
   position: relative;
-  /* FIX #24: aspect-ratio + max-width instead of fixed height */
-  aspect-ratio: 4/5;
-  width: min(320px, 80vw);
+  /* Taller aspect ratio so photo is clearly visible on mobile */
+  aspect-ratio: 3/4;
+  width: min(300px, 85vw);
   margin: 0 auto;
 }
 .about-visual-bg {
@@ -449,22 +449,23 @@ section {
   position: absolute; inset: 20px;
   background: var(--surface2); border: 1px solid var(--border);
   border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  padding: 16px; overflow: hidden;
+  overflow: hidden;
+  padding: 0;
 }
-/* Avatar fills the inner box — large circle, fully visible */
+/* Avatar fills the entire inner box */
 .about-avatar-square {
-  width: min(75%, 200px);
-  aspect-ratio: 1/1;
-  overflow: hidden; border-radius: 50%;
-  border: 2px solid rgba(167,139,250,0.4);
-  box-shadow: 0 0 32px var(--glow-purple), 0 0 64px rgba(167,139,250,0.15);
-  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 .about-avatar-square img {
   width: 100%; height: 100%;
   object-fit: cover; object-position: center top;
   transition: transform 0.4s ease;
+  display: block;
 }
 .about-avatar-square:hover img { transform: scale(1.05); }
 .about-desc {
@@ -988,20 +989,6 @@ footer {
       <div class="about-visual-inner">
         <div class="about-avatar-square">
           <img src="divya.jpg" alt="Divya Kumari" loading="lazy" width="200" height="200">
-        </div>
-        <div class="about-stats">
-          <div class="about-stat">
-            <div class="about-stat-num">2+</div>
-            <div class="about-stat-label">Years Learning</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">4+</div>
-            <div class="about-stat-label">Projects</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">6+</div>
-            <div class="about-stat-label">Certifications</div>
-          </div>
         </div>
       </div>
     </div>
