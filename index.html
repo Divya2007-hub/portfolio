@@ -677,6 +677,136 @@ section {
   border-radius: 2px; color: var(--pink);
 }
 
+/* ── View Certificate Button ── */
+.cert-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  margin-top: auto; padding: 9px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.68rem, 1.2vw, 0.76rem);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none;
+  color: var(--lavender);
+  background: rgba(167,139,250,0.07);
+  border: 1px solid rgba(167,139,250,0.25);
+  border-radius: 3px;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  min-height: 38px;
+  transition: color 0.3s ease, border-color 0.3s ease,
+              transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s ease;
+  /* entrance — starts invisible, revealed by .cert-card becoming visible */
+  opacity: 0;
+  transform: translateY(8px);
+}
+/* Shimmer pseudo-element */
+.cert-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(196,181,253,0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0s;
+}
+/* Animated gradient border (top line) */
+.cert-btn::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: var(--grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.cert-btn:hover {
+  color: #fff;
+  border-color: rgba(167,139,250,0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(167,139,250,0.25),
+              0 0 0 1px rgba(167,139,250,0.15) inset;
+}
+.cert-btn:hover::before {
+  transform: translateX(100%);
+  transition: transform 0.55s ease;
+}
+.cert-btn:hover::after {
+  transform: scaleX(1);
+}
+/* Entrance animation: triggered once the card's reveal fires */
+.cert-card.visible .cert-btn {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease 0.25s,
+              transform 0.5s cubic-bezier(0.16,1,0.3,1) 0.25s,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.35s ease;
+}
+/* tooltip */
+.cert-btn[data-tooltip] {
+  position: relative;
+}
+.cert-btn[data-tooltip]::before {
+  /* override shimmer — we'll handle tooltip separately */
+  content: none;
+}
+.cert-btn-shimmer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(196,181,253,0.18) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0s;
+  pointer-events: none;
+}
+.cert-btn:hover .cert-btn-shimmer::before,
+.cert-btn:hover::before {
+  transform: translateX(100%);
+  transition: transform 0.55s ease;
+}
+/* tooltip bubble */
+.cert-btn .cert-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(13,11,26,0.95);
+  border: 1px solid rgba(167,139,250,0.3);
+  color: var(--lavender);
+  font-size: 0.65rem; letter-spacing: 0.08em;
+  padding: 5px 10px; border-radius: 3px;
+  white-space: nowrap; pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+.cert-btn .cert-tooltip::after {
+  content: '';
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(167,139,250,0.3);
+}
+.cert-btn:hover .cert-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.cert-btn-icon {
+  flex-shrink: 0;
+  display: inline-flex; align-items: center;
+  transition: transform 0.3s ease;
+}
+.cert-btn:hover .cert-btn-icon {
+  transform: translateX(2px) scale(1.1);
+}
+
 /* ============================================================
    CONTACT
    FIX #34: same auto-fill grid approach
@@ -1235,31 +1365,61 @@ footer {
       <div class="cert-icon">🎓</div>
       <div><div class="cert-title">Basic Linear Algebra</div><div class="cert-issuer">NPTEL · IIT</div></div>
       <div class="cert-badge">Verified</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn" aria-label="View Linear Algebra certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
     <div class="cert-card reveal" style="transition-delay:0.1s">
       <div class="cert-icon">☕</div>
       <div><div class="cert-title">Learn Java Programming – Beginner to Master</div><div class="cert-issuer">Online Learning Platform</div></div>
       <div class="cert-badge">Completed</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn" aria-label="View Java certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
     <div class="cert-card reveal" style="transition-delay:0.2s">
       <div class="cert-icon">🔐</div>
       <div><div class="cert-title">Introduction to Cyber Security</div><div class="cert-issuer">Online Learning Platform</div></div>
       <div class="cert-badge">Completed</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn" aria-label="View Cyber Security certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
     <div class="cert-card reveal" style="transition-delay:0.3s">
       <div class="cert-icon">✨</div>
       <div><div class="cert-title">Gemini in Google Docs</div><div class="cert-issuer">Google</div></div>
       <div class="cert-badge">Completed</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn" aria-label="View Gemini certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
     <div class="cert-card reveal" style="transition-delay:0.4s">
       <div class="cert-icon">🌐</div>
       <div><div class="cert-title">Web Development Fundamentals</div><div class="cert-issuer">Self-Paced Learning</div></div>
       <div class="cert-badge">Completed</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn" aria-label="View Web Development certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
     <div class="cert-card reveal" style="transition-delay:0.5s">
       <div class="cert-icon">🤖</div>
       <div><div class="cert-title">AI & Python Fundamentals</div><div class="cert-issuer">Online Platforms</div></div>
       <div class="cert-badge">In Progress</div>
+      <a href="https://www.linkedin.com/in/divya-kumari5xxx2t95/details/certifications/" target="_blank" rel="noopener" class="cert-btn cert-btn--muted" aria-label="View AI & Python certificate">
+        <span class="cert-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+        View Certificate
+        <span class="cert-tooltip">Open Certificate</span>
+      </a>
     </div>
   </div>
 </section>
