@@ -494,7 +494,7 @@ section {
 }
 @keyframes scrollLine { 0%,100%{opacity:0.3} 50%{opacity:1} }
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opac</style>ity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -1067,6 +1067,35 @@ footer {
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .timeline::before, .loader-bar { height: 0.5px; }
 }
+
+/* ── High DPI / Retina — sharper borders ── */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .timeline::before, .loader-bar { height: 0.5px; }
+}
+
+/* ── CollegeCompass Project Screenshot ── */
+.project-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-preview {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-preview {
+  transform: scale(1.05);
+}
+
+.project-num {
+  z-index: 2;
+}
+
 </style>
 </head>
 <body>
@@ -1086,6 +1115,7 @@ footer {
 </div>
 <!-- Particles canvas -->
 <canvas id="particles"></canvas>
+
 <!-- ─────────────────── NAV ─────────────────── -->
 <nav id="nav">
 <a aria-label="Back to top" class="nav-logo" href="#hero">DK</a>
@@ -1158,8 +1188,144 @@ footer {
 <section id="about"><div class="section-label">01 — About</div><h2 class="section-title">The <span>person</span><br/>behind the code</h2><div class="about-grid"><div class="about-visual reveal"><div class="about-visual-bg"></div><div class="about-visual-border"></div><div class="about-visual-inner"><div class="about-avatar-square"><img alt="Divya Kumari" height="200" loading="lazy" src="divya.jpg" width="200"/></div></div></div><div class="about-text reveal"><p class="about-desc">I'm Divya, a Computer Science Engineering student at AMC Engineering College, Bengaluru (expected graduation 2028). I build full-stack web applications and explore practical AI/ML solutions.</p><p class="about-desc">My recent projects include ResQ AI, a disaster-response assistant; NEXA, an AI productivity app; and CollegeCompass, a full-stack college comparison platform. I work with Next.js, TypeScript, PostgreSQL and modern web development tools.</p><p class="about-desc">I completed an IBM SkillsBuild Machine Learning &amp; Applied AI internship and participated in open-source projects. I'm interested in remote software engineering internships and hands-on team projects.</p><div class="about-tags"><span class="about-tag">Full-Stack Development</span><span class="about-tag">AI/ML</span><span class="about-tag">Open Source</span><span class="about-tag">Problem Solving</span></div></div></div></section>
 <!-- ─────────────────── SKILLS ─────────────────── -->
 <section id="skills"><div class="section-label">02 — Skills</div><h2 class="section-title">What I work<br/><span>with</span></h2><div class="skills-grid"><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-code" style="color:#fff"></i></div><div class="skill-card-title">Frontend Development</div><div class="skill-items"><span class="skill-item">React.js</span><span class="skill-item">Next.js</span><span class="skill-item">JavaScript</span><span class="skill-item">TypeScript</span><span class="skill-item">HTML5</span><span class="skill-item">CSS3</span><span class="skill-item">Tailwind CSS</span></div></div><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-server" style="color:#fff"></i></div><div class="skill-card-title">Backend &amp; APIs</div><div class="skill-items"><span class="skill-item">Node.js</span><span class="skill-item">REST APIs</span><span class="skill-item">Authentication</span><span class="skill-item">API Integration</span></div></div><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-database" style="color:#fff"></i></div><div class="skill-card-title">Databases</div><div class="skill-items"><span class="skill-item">PostgreSQL</span><span class="skill-item">Neon PostgreSQL</span><span class="skill-item">Prisma ORM</span><span class="skill-item">MySQL</span></div></div><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-terminal" style="color:#fff"></i></div><div class="skill-card-title">Programming &amp; CS</div><div class="skill-items"><span class="skill-item">Python</span><span class="skill-item">Java</span><span class="skill-item">Data Structures &amp; Algorithms</span><span class="skill-item">OOP</span><span class="skill-item">Database Design</span></div></div><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-tools" style="color:#fff"></i></div><div class="skill-card-title">Tools &amp; Deployment</div><div class="skill-items"><span class="skill-item">Git</span><span class="skill-item">GitHub</span><span class="skill-item">Vercel</span><span class="skill-item">VS Code</span></div></div><div class="skill-card reveal"><div class="skill-card-icon"><i class="fas fa-robot" style="color:#fff"></i></div><div class="skill-card-title">AI &amp; Machine Learning</div><div class="skill-items"><span class="skill-item">Applied AI</span><span class="skill-item">Machine Learning Concepts</span><span class="skill-item">AI Integration</span><span class="skill-item">Python</span></div></div></div></section>
+
 <!-- ─────────────────── PROJECTS ─────────────────── -->
-<section id="projects"><div class="section-label">03 — Projects</div><h2 class="section-title">Things I've<br/><span>built</span></h2><div class="projects-grid"><article class="project-card reveal"><div class="project-img"><div class="project-img-pattern"></div><i class="fas fa-shield-alt project-img-icon"></i><div class="project-num">01</div></div><div class="project-body"><div class="project-tags"><span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">Tailwind CSS</span><span class="project-tag">REST APIs</span></div><h3 class="project-title">ResQ AI</h3><p class="project-desc">AI-assisted disaster response platform providing emergency guidance and disaster preparedness information. Built with Next.js and TypeScript and deployed on Vercel.</p><div class="project-links"><a class="project-link primary" href="https://github.com/Divya2007-hub/ResQ-AI.git" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i> GitHub</a><a class="project-link secondary" href="https://res-q-ai-faia.vercel.app/" rel="noopener noreferrer" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a></div></div></article><article class="project-card reveal"><div class="project-img"><div class="project-img-pattern"></div><i class="fas fa-check-circle project-img-icon"></i><div class="project-num">02</div></div><div class="project-body"><div class="project-tags"><span class="project-tag">JavaScript</span><span class="project-tag">PWA</span><span class="project-tag">AI Integration</span></div><h3 class="project-title">NEXA</h3><p class="project-desc">Productivity application featuring task management, focus mode, reminders, streak tracking, offline PWA support and AI-based workflow suggestions.</p><div class="project-links"><a class="project-link primary" href="https://github.com/Divya2007-hub/NEXA.git" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i> GitHub</a><a class="project-link secondary" href="https://nexa-sandy-five.vercel.app/" rel="noopener noreferrer" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a></div></div></article><article class="project-card reveal"><div class="project-img"><div class="project-img-pattern"></div><i class="fas fa-university project-img-icon"></i><div class="project-num">03</div></div><div class="project-body"><div class="project-tags"><span class="project-tag">Next.js</span><span class="project-tag">TypeScript</span><span class="project-tag">Prisma</span><span class="project-tag">PostgreSQL</span></div><h3 class="project-title">CollegeCompass</h3><p class="project-desc">Full-stack college discovery and comparison platform covering 25+ colleges, 85+ academic programs and 136+ database records, with authentication and saved-college features.</p><div class="project-links"><a class="project-link primary" href="https://github.com/Divya2007-hub/-CollegeCompass" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i> GitHub</a><a class="project-link secondary" href="https://collegefinder-mu.vercel.app/" rel="noopener noreferrer" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a></div></div></article></div></section>
+<section id="projects">
+  <div class="section-label">03 — Projects</div>
+
+  <h2 class="section-title">
+    Things I've<br/><span>built</span>
+  </h2>
+
+  <div class="projects-grid">
+
+    <!-- PROJECT 01: RESQ AI -->
+    <article class="project-card reveal">
+      <div class="project-img">
+        <div class="project-img-pattern"></div>
+        <i class="fas fa-shield-alt project-img-icon"></i>
+        <div class="project-num">01</div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Tailwind CSS</span>
+          <span class="project-tag">REST APIs</span>
+        </div>
+
+        <h3 class="project-title">ResQ AI</h3>
+
+        <p class="project-desc">
+          AI-assisted disaster response platform providing
+          emergency guidance and disaster preparedness information.
+          Built with Next.js and TypeScript and deployed on Vercel.
+        </p>
+
+        <div class="project-links">
+          <a class="project-link primary"
+             href="https://github.com/Divya2007-hub/ResQ-AI.git"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+
+          <a class="project-link secondary"
+             href="https://res-q-ai-faia.vercel.app/"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 02: NEXA -->
+    <article class="project-card reveal">
+      <div class="project-img">
+        <div class="project-img-pattern"></div>
+        <i class="fas fa-check-circle project-img-icon"></i>
+        <div class="project-num">02</div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">PWA</span>
+          <span class="project-tag">AI Integration</span>
+        </div>
+
+        <h3 class="project-title">NEXA</h3>
+
+        <p class="project-desc">
+          Productivity application featuring task management,
+          focus mode, reminders, streak tracking, offline PWA
+          support and AI-based workflow suggestions.
+        </p>
+
+        <div class="project-links">
+          <a class="project-link primary"
+             href="https://github.com/Divya2007-hub/NEXA.git"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+
+          <a class="project-link secondary"
+             href="https://nexa-sandy-five.vercel.app/"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 03: COLLEGECOMPASS -->
+    <article class="project-card reveal">
+      <div class="project-img">
+        <img
+          src="collegecompass.png"
+          alt="CollegeCompass Website Screenshot"
+          class="project-preview"
+          loading="lazy"
+        />
+        <div class="project-num">03</div>
+      </div>
+
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Prisma</span>
+          <span class="project-tag">PostgreSQL</span>
+        </div>
+
+        <h3 class="project-title">CollegeCompass</h3>
+
+        <p class="project-desc">
+          Full-stack college discovery and comparison platform
+          covering 25+ colleges, 85+ academic programs and
+          136+ database records, with authentication and
+          saved-college features.
+        </p>
+
+        <div class="project-links">
+          <a class="project-link primary"
+             href="https://github.com/Divya2007-hub/-CollegeCompass"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+
+          <a class="project-link secondary"
+             href="https://collegefinder-mu.vercel.app/"
+             rel="noopener noreferrer" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 <!-- ─────────────────── EXPERIENCE ─────────────────── -->
 <section id="experience">
   <div class="section-label">04 — Experience</div>
