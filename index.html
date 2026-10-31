@@ -682,6 +682,11 @@ section {
   transform: scale(1.03);
 }
 
+/* NEXA screenshot - show the complete cropped preview */
+.nexa-preview-img {
+  object-fit: fill;
+}
+
 /* ResQ AI screenshot crop */
 .resq-preview-img {
   object-position: center 18%;
@@ -1268,9 +1273,9 @@ footer {
     <article class="project-card reveal">
       <div class="project-img">
         <img
-          src="nexa.png"
-          alt="NEXA Productivity App Preview"
-          class="project-preview-img"
+          src="nexa-portfolio-preview.png"
+          alt="NEXA Productivity Dashboard"
+          class="project-preview-img nexa-preview-img"
           loading="lazy"
         />
       </div>
