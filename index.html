@@ -633,21 +633,40 @@ section {
   transform: translateY(-8px);
   box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(167,139,250,0.2);
 }
+
+/* ── PROJECT IMAGE CONTAINER ── */
 .project-img {
-  /* FIX #31: percentage height relative to card width via padding trick */
-  height: clamp(140px,20vw,200px);
-  position: relative; overflow: hidden;
-  background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(244,114,182,0.1));
-  display: flex; align-items: center; justify-content: center;
+  height: clamp(140px, 20vw, 200px);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(167,139,250,0.1),
+    rgba(244,114,182,0.1)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.project-img-icon { font-size: 3rem; opacity: 0.3; }
+
+/* Original icons and patterns */
+.project-img-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
 .project-img-pattern {
-  position: absolute; inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255,255,255,0.05) 1px,
+    transparent 0
+  );
   background-size: 24px 24px;
 }
 
-/* CollegeCompass screenshot only */
+/* Screenshots for all three projects */
 .project-preview-img {
   display: block;
   width: 100%;
@@ -656,12 +675,23 @@ section {
   object-position: center center;
   position: relative;
   z-index: 1;
+  transition: transform 0.4s ease;
 }
 
-/* Keep project number above the image */
+.project-card:hover .project-preview-img {
+  transform: scale(1.03);
+}
+
+/* ResQ AI screenshot crop */
+.resq-preview-img {
+  object-position: center 18%;
+}
+
+/* Project number overlay */
 .project-num {
   z-index: 2;
 }
+
 
 .project-num {
   position: absolute; top: 16px; right: 16px;
@@ -1189,12 +1219,17 @@ footer {
   <div class="projects-grid">
 
     <!-- PROJECT 01: RESQ AI -->
+
     <article class="project-card reveal">
       <div class="project-img">
-        <div class="project-img-pattern"></div>
-        <i class="fas fa-shield-alt project-img-icon"></i>
-        <div class="project-num">01</div>
+        <img
+          src="resqai.png"
+          alt="ResQ AI Website Preview"
+          class="project-preview-img resq-preview-img"
+          loading="lazy"
+        />
       </div>
+
 
       <div class="project-body">
         <div class="project-tags">
@@ -1228,12 +1263,16 @@ footer {
       </div>
     </article>
 
+    
     <!-- PROJECT 02: NEXA -->
     <article class="project-card reveal">
       <div class="project-img">
-        <div class="project-img-pattern"></div>
-        <i class="fas fa-check-circle project-img-icon"></i>
-        <div class="project-num">02</div>
+        <img
+          src="nexa.png"
+          alt="NEXA Productivity App Preview"
+          class="project-preview-img"
+          loading="lazy"
+        />
       </div>
 
       <div class="project-body">
