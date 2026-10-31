@@ -666,6 +666,7 @@ section {
   background-size: 24px 24px;
 }
 
+
 /* Screenshots for all three projects */
 .project-preview-img {
   display: block;
@@ -682,14 +683,21 @@ section {
   transform: scale(1.03);
 }
 
-/* NEXA screenshot - show the complete cropped preview */
+/* NEXA screenshot */
 .nexa-preview-img {
   object-fit: fill;
 }
 
-/* ResQ AI screenshot crop */
+/* ResQ AI screenshot */
 .resq-preview-img {
   object-position: center 18%;
+}
+
+/* CollegeCompass screenshot */
+.college-preview-img {
+  object-fit: contain;
+  object-position: center center;
+  background: #211f55;
 }
 
 /* Project number overlay */
@@ -1315,7 +1323,12 @@ footer {
     <article class="project-card reveal">
       
     <div class="project-img">
-      <img src="collegecompass.png" alt="CollegeCompass preview" class="project-preview-img">
+      <img
+        src="collegecompass.png"
+        alt="CollegeCompass Website Preview"
+        class="project-preview-img college-preview-img"
+        loading="lazy"
+      />
     </div>
 
 
